@@ -1,0 +1,86 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Sentiment Analysis</title>
+	<link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+	<style>
+		.bg-dark {
+			background-color: #52307c !important;
+		}
+
+		img {
+			float: right;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-dark bg-dark">
+		<div class="col-lg-12" style="text-align:center">
+			<a class="navbar-brand" style="font-size: 40px;color:white;" href="#">Sentiment Analysis of Reviews</a>
+		</div>
+	</nav>
+	<div class="col-lg-12">
+		<div id="content" style="margin-top:2em">
+			<div class="container">
+				<div class="col-lg-12">
+					<div>
+
+						<br>
+						<p><img src="https://www.revuze.it/wp-content/uploads/2019/07/sentiment-analysis-Featured-1024x576.png"
+								style="width:400px;height:250px;margin-left:15px" class="img-rounded"> Nowadays,
+							approximately 85% of the consumers trust online reviews as much as recommendations from
+							relatives and friends while buying something online.Amazon is one of the best mobile
+							applications which is considered as a treasure trove of all mobile reviews, and their review
+							system is accessible across all channels presenting reviews in an easy-to-use format. This
+							tells how many people around the world are affected by these reviews before they buy mobile
+							phones online. Therefore, there is a need for an intelligent system that can analyze
+							thousands of reviews of unlocked mobile phones sold on amazon.com to find insights with
+							respect to reviews, ratings, price, and the relationships among them.
+						</p>
+						<br>
+						<p>This project focuses on building a Sentiment Analysis model using Natural Language Processing
+							(NLP) with Deep Learning to predict the sentiment of a review on mobile phones depending on
+							the text of the review and the ratings. It helps in predicting if the review was positive or negative.
+							The model is trained using
+							<a
+								href='https://www.kaggle.com/grikomsn/amazon-cell-phones-reviews/notebooks?sortBy=hotness&group=everyone&pageSize=20&datasetId=363619&tagIds=13208'>Amazon
+								Cell Phones Reviews dataset</a> which is extracted from Kaggle and contains 82,815
+							reviews from
+							Amazon about cell phones from 2004 up until Sep 2019. This model is built using Deep
+							Learning and is able to make predictions with 80.6% accuracy.</p>
+					</div>
+					<div>
+						<div>
+							<h4>Write a review</h4>
+							<form action="http://localhost:5000/predict" id="upload-file" method="POST"
+								enctype="multipart/form-data">
+								<textarea name="message" rows="4" cols="50" style='margin:auto'></textarea>
+								<br>
+								<input type="submit" value="Predict" style="margin-top: 15px;">
+								<div class="results" style="margin-top: 10px;">
+									{% if prediction == 1 %}
+									<h4 style="color:green">The results: That is a positive review</41>
+										{% elif prediction == 0 %}
+										<h4 style="color:red">The results: That is a negative review</h4>
+										{% endif %}
+								</div>
+							</form>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
